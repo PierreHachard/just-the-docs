@@ -1,6 +1,6 @@
 <div class="side-bar">
   <div class="site-header">
-    <a href="{{ '/' | relative_url }}" class="site-title lh-tight">{% include title.html %}</a>
+    <a href="{{ site.main_url }}" class="site-title lh-tight">{% include title.html %}</a>
     <a href="#" id="menu-button" class="site-button">
       <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
     </a>
@@ -62,8 +62,18 @@
   {% if nav_footer_custom != "" %}
     {{ nav_footer_custom }}
   {% else %}
-    <footer class="site-footer">
-      This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
-    </footer>
+    {% if site.show_footer %}
+      {% if page.url contains "deploy" or page.tag == "deploy"%}
+        <footer class="site-footer">
+          <a href="/deploy/en/"><img src="{{site.baseurl}}/assets/images/en.png" alt="Anglais"></a>
+          <a href="/deploy/fr/" style="margin-left: 10px"><img src="{{site.baseurl}}/assets/images/fr.png" alt="Français"></a>
+        </footer>
+      {% else %}
+        <footer class="site-footer">
+          <a href="/en/"><img src="{{site.baseurl}}/assets/images/en.png" alt="Anglais"></a>
+          <a href="/fr/" style="margin-left: 10px"><img src="{{site.baseurl}}/assets/images/fr.png" alt="Français"></a>
+        </footer>
+      {% endif %}
+    {% endif %}
   {% endif %}
 </div>
