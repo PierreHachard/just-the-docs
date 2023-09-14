@@ -32,9 +32,23 @@
   font-size: 11px;
 }
 
+.logo-light {
+  display: block;
+}
+
+.logo-dark {
+  display: none;
+}
+
 @media (prefers-color-scheme: dark) {
   .copyBtn {
     color: white;
     border-color: white;
+  }
+  .logo-light {
+    display: none;
+  }
+  .logo-dark {
+    display: block;
   }
 }
